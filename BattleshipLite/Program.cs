@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleshipLiteLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace BattleshipLite
         static void Main(string[] args)
         {
             WelcomeMessage();
+
             Console.ReadLine();
         }
 
@@ -18,6 +20,22 @@ namespace BattleshipLite
         {
             Console.WriteLine("Welcome to Battleship Lite");
             Console.WriteLine("**************************");
+        }
+
+        private static PlayerInfoModel CreatePlayer()
+        {
+            PlayerInfoModel output = new PlayerInfoModel();
+
+            output.UsersName = GetUsersName();
+
+        }
+
+        private static string GetUsersName()
+        {
+            Console.WriteLine("What is your name: ");
+            string output = Console.ReadLine();
+
+            return output;
         }
     }
 }
