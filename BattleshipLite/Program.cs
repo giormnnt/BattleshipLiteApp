@@ -14,8 +14,8 @@ namespace BattleshipLite
         {
             WelcomeMessage();
 
-            PlayerInfoModel player1 = CreatePlayer();
-            PlayerInfoModel player2 = CreatePlayer();
+            PlayerInfoModel player1 = CreatePlayer("Player 1");
+            PlayerInfoModel player2 = CreatePlayer("Player 1");
 
             Console.ReadLine();
         }
@@ -26,9 +26,11 @@ namespace BattleshipLite
             Console.WriteLine("**************************");
         }
 
-        private static PlayerInfoModel CreatePlayer()
+        private static PlayerInfoModel CreatePlayer(string playerTitle)
         {
             PlayerInfoModel output = new PlayerInfoModel();
+
+            Console.WriteLine($"Player Information for {playerTitle}");
 
             output.UsersName = GetUsersName();
 
@@ -43,7 +45,7 @@ namespace BattleshipLite
 
         private static string GetUsersName()
         {
-            Console.WriteLine("What is your name: ");
+            Console.Write("What is your name: ");
             string output = Console.ReadLine();
 
             return output;
