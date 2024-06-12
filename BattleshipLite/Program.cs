@@ -14,10 +14,55 @@ namespace BattleshipLite
         {
             WelcomeMessage();
 
-            PlayerInfoModel player1 = CreatePlayer("Player 1");
-            PlayerInfoModel player2 = CreatePlayer("Player 2");
+            PlayerInfoModel activePlayer = CreatePlayer("Player 1");
+            PlayerInfoModel opponent = CreatePlayer("Player 2");
+            PlayerInfoModel winner = null;
 
+            do
+            {
+                // display grid from activePlayer on where they fired
+                DisplayShotGrid(activePlayer);
+
+                // ask activePlayer for a shot
+                // determine if it is a valid shot
+                // determine shot results
+                // determine if the game is over
+                // if over, set activePlayer as the winner
+                // else, swap positions (activePlayer to opponent)
+
+            }while(winner == null);
             Console.ReadLine();
+        }
+
+        private static void DisplayShotGrid(PlayerInfoModel activePlayer)
+        {
+            string currentRow = activePlayer.ShotGrid[0].SpotLetter;
+
+            foreach (var gridSpot in activePlayer.ShotGrid) 
+            {
+                if (gridSpot.SpotLetter != currentRow)
+                {
+                    Console.WriteLine();
+                    currentRow = gridSpot.SpotLetter;
+                }
+
+                if (gridSpot.Status == GridSpotStatus.Empty)
+                {
+                    Console.Write($" {gridSpot.SpotLetter}{gridSpot.SpotNumber} ");
+                }
+                else if (gridSpot.Status == GridSpotStatus.Hit)
+                {
+                    Console.Write(" X ");
+                }
+                else if (gridSpot.Status == GridSpotStatus.Miss) 
+                {
+                    Console.Write(" O ");
+                }
+                else
+                {
+                    Console.Write(" ? ");
+                }
+            }
         }
 
         private static void WelcomeMessage()
