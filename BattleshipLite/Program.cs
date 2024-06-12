@@ -1,4 +1,5 @@
-﻿using BattleshipLiteLibrary.Models;
+﻿using BattleshipLiteLibrary;
+using BattleshipLiteLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,8 @@ namespace BattleshipLite
 
             output.UsersName = GetUsersName();
 
+            GameLogic.InitializeGrid(output);
+
         }
 
         private static string GetUsersName()
@@ -37,5 +40,7 @@ namespace BattleshipLite
 
             return output;
         }
+
+
     }
 }
