@@ -15,7 +15,7 @@ namespace BattleshipLite
             WelcomeMessage();
 
             PlayerInfoModel player1 = CreatePlayer("Player 1");
-            PlayerInfoModel player2 = CreatePlayer("Player 1");
+            PlayerInfoModel player2 = CreatePlayer("Player 2");
 
             Console.ReadLine();
         }
