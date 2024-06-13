@@ -62,6 +62,21 @@ namespace BattleshipLiteLibrary
             return isActive;
         }
 
+        public static int GetShotCount(PlayerInfoModel player)
+        {
+            int shotCount = 0; 
+
+            foreach (var shot in player.ShotGrid)
+            {
+                if (shot.Status != GridSpotStatus.Empty)
+                {
+                    shotCount++;
+                }
+            }
+
+            return shotCount;
+        }
+
 
     }
 }
