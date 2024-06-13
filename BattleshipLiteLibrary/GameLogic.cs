@@ -175,6 +175,7 @@ namespace BattleshipLiteLibrary
                 if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)
                 {
                     isAHit = true;
+                    ship.Status = GridSpotStatus.Sunk;
                 }
             }
 
@@ -182,7 +183,7 @@ namespace BattleshipLiteLibrary
         }
 
         public static void MarkShotResult(PlayerInfoModel player, string row, int column, bool isAHit)
-        {
+                        {
             foreach (var gridSpot in player.ShotGrid)
             {
                 if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)
