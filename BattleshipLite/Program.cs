@@ -45,7 +45,7 @@ namespace BattleshipLite
         private static void IdentifyWinnter(PlayerInfoModel winner)
         {
             Console.WriteLine($"Congratulations to {winner.UsersName} for winning!!!");
-            Console.WriteLine($"{winner.UsersName} took {GameLogic.GetShoutCount(winner)} shots.");
+            Console.WriteLine($"{winner.UsersName} took {GameLogic.GetShotCount(winner)} shots.");
         }
 
         private static void RecordPlayerShot(PlayerInfoModel activePlayer, PlayerInfoModel opponent)
