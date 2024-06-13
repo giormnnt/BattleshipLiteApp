@@ -129,9 +129,22 @@ namespace BattleshipLiteLibrary
 
             return isValidLocation;
         }
-        public static (string row, int column) SplitShotIntoRowAndColumn(string location)
+        public static (string row, int column) SplitShotIntoRowAndColumn(string shot)
         {
-            throw new NotImplementedException();
+            string row = "";
+            int column = 0;
+
+            if (shot.Length != 2)
+            {
+                throw new ArgumentException("This was an invalid shot type.", "shot");
+            }
+
+            char[] shotArray = shot.ToArray();
+
+            row = shotArray[0].ToString();
+            column = int.Parse(shotArray[1].ToString());
+
+            return (row, column);
         }
     }
 }
