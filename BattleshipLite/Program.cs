@@ -35,8 +35,17 @@ namespace BattleshipLite
                 {
                     winner = activePlayer;
                 }
-            }while(winner == null);
+            } while (winner == null);
+
+            IdentifyWinnter(winner);
+
             Console.ReadLine();
+        }
+
+        private static void IdentifyWinnter(PlayerInfoModel winner)
+        {
+            Console.WriteLine($"Congratulations to {winner.UsersName} for winning!!!");
+            Console.WriteLine($"{winner.UsersName} took {GameLogic.GetShoutCount(winner)} shots.");
         }
 
         private static void RecordPlayerShot(PlayerInfoModel activePlayer, PlayerInfoModel opponent)
@@ -54,7 +63,7 @@ namespace BattleshipLite
         {
             string currentRow = activePlayer.ShotGrid[0].SpotLetter;
 
-            foreach (var gridSpot in activePlayer.ShotGrid) 
+            foreach (var gridSpot in activePlayer.ShotGrid)
             {
                 if (gridSpot.SpotLetter != currentRow)
                 {
@@ -70,7 +79,7 @@ namespace BattleshipLite
                 {
                     Console.Write(" X ");
                 }
-                else if (gridSpot.Status == GridSpotStatus.Miss) 
+                else if (gridSpot.Status == GridSpotStatus.Miss)
                 {
                     Console.Write(" O ");
                 }
