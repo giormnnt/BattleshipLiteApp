@@ -64,7 +64,7 @@ namespace BattleshipLiteLibrary
 
         public static int GetShotCount(PlayerInfoModel player)
         {
-            int shotCount = 0; 
+            int shotCount = 0;
 
             foreach (var shot in player.ShotGrid)
             {
@@ -77,6 +77,41 @@ namespace BattleshipLiteLibrary
             return shotCount;
         }
 
+        public static bool PlaceShip(PlayerInfoModel model, string location)
+        {
+            bool output = false;
+            (string row, int column) = SplitShotIntoRowAndColumn(location);
 
+            bool isValidLocation = ValidateGridLocation(model, row, column);
+            bool isSpotOpen = ValidateShipLocation(model, row, column);
+
+            if (isValidLocation && isSpotOpen)
+            {
+                model.ShipLocations.Add(new GridSpotModel()
+                {
+                    SpotLetter = row,
+                    SpotNumber = column,
+                    Status = GridSpotStatus.Ship
+                }); 
+
+                output = true;
+            }
+
+            return output;
+        }
+
+        private static bool ValidateShipLocation(PlayerInfoModel model, string row, int column)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)
+        {
+            throw new NotImplementedException();
+        }
+        public static (string row, int column) SplitShotIntoRowAndColumn(string location)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
