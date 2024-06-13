@@ -27,7 +27,7 @@ namespace BattleshipLiteLibrary
 
             foreach (string letter in letters)
             {
-                foreach (int number in numbers) 
+                foreach (int number in numbers)
                 {
                     AddGridSpot(model, letter, number);
                 }
@@ -46,5 +46,22 @@ namespace BattleshipLiteLibrary
 
             model.ShotGrid.Add(spot);
         }
+
+        public static bool PlayerStillActive(PlayerInfoModel player)
+        {
+            bool isActive = false;
+
+            foreach (var ship in player.ShipLocations)
+            {
+                if (ship.Status != GridSpotStatus.Sunk)
+                {
+                    isActive = true;
+                }
+            }
+
+            return isActive;
+        }
+
+
     }
 }
