@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -145,6 +146,24 @@ namespace BattleshipLiteLibrary
             column = int.Parse(shotArray[1].ToString());
 
             return (row, column);
+        }
+
+        public static bool ValidateShot(PlayerInfoModel player, string row, int column)
+        {
+            bool isValidShot = false;
+
+            foreach (var gridSpot in player.ShotGrid)
+            {
+                if (gridSpot.SpotLetter == row.ToUpper() && gridSpot.SpotNumber == column)
+                {
+                    if (gridSpot.Status == GridSpotStatus.Empty)
+                    {
+                        isValidShot = true;
+                    }
+                }
+            }
+
+            return isValidShot;
         }
     }
 }
