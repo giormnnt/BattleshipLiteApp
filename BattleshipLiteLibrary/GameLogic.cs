@@ -165,5 +165,21 @@ namespace BattleshipLiteLibrary
 
             return isValidShot;
         }
+
+        public static bool IdentifyShotResult(PlayerInfoModel opponent, string row, int column)
+        {
+            bool isAHit = false;
+
+            foreach (var ship in opponent.ShipLocations)
+            {
+                if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)
+                {
+                    isAHit = true;
+                }
+            }
+
+            return isAHit;
+        }
+
     }
 }
