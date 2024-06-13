@@ -92,7 +92,7 @@ namespace BattleshipLiteLibrary
                     SpotLetter = row.ToUpper(),
                     SpotNumber = column,
                     Status = GridSpotStatus.Ship
-                }); 
+                });
 
                 output = true;
             }
@@ -117,7 +117,17 @@ namespace BattleshipLiteLibrary
 
         private static bool ValidateGridLocation(PlayerInfoModel model, string row, int column)
         {
-            throw new NotImplementedException();
+            bool isValidLocation = false;
+
+            foreach (var ship in model.ShotGrid)
+            {
+                if (ship.SpotLetter == row.ToUpper() && ship.SpotNumber == column)
+                {
+                    isValidLocation = true;
+                }
+            }
+
+            return isValidLocation;
         }
         public static (string row, int column) SplitShotIntoRowAndColumn(string location)
         {
